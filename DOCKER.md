@@ -226,29 +226,31 @@ docker run -d \
 
 ## CI/CD Integration
 
-### GitHub Actions Example
+This repository includes automated GitHub Actions workflows for building and pushing Docker images.
 
-```yaml
-name: Build and Deploy Docker Image
+### Automated Docker Hub Deployment
 
-on:
-  push:
-    branches: [main]
+The repository is configured with GitHub Actions that automatically:
+- **Build** multi-architecture Docker images on every push to main
+- **Push** images to Docker Hub (`yoruverse/ui`)
+- **Tag** with version numbers for releases
+- **Scan** for security vulnerabilities
+- **Notify** with deployment status
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Build Docker image
-        run: docker build -t yoruverse-ui:latest .
-      
-      - name: Deploy to production
-        run: |
-          docker stop yoruverse-ui || true
-          docker rm yoruverse-ui || true
-          docker run -d --name yoruverse-ui -p 4321:4321 yoruverse-ui:latest
+**Setup Required**: See [GITHUB_ACTIONS.md](./GITHUB_ACTIONS.md) for complete setup instructions.
+
+### Quick Setup
+1. Add Docker Hub credentials to GitHub Secrets:
+   - `DOCKERHUB_USERNAME`: Your Docker Hub username  
+   - `DOCKERHUB_TOKEN`: Your Docker Hub access token
+2. Push to main branch to trigger build
+3. Image will be available at: `yoruverse/ui:latest`
+
+### Pull Pre-built Image
+```bash
+# Pull from Docker Hub (built by GitHub Actions)
+docker pull yoruverse/ui:latest
+docker run -d --name yoruverse-ui -p 4321:4321 yoruverse/ui:latest
 ```
 
 ## Support
