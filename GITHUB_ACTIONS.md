@@ -18,7 +18,7 @@ Go to your GitHub repository → Settings → Secrets and variables → Actions 
 
 #### DOCKERHUB_USERNAME
 - **Name**: `DOCKERHUB_USERNAME`
-- **Value**: Your Docker Hub username (e.g., `yoruverse`)
+- **Value**: Your Docker Hub username (e.g., `jotis`)
 
 #### DOCKERHUB_TOKEN
 - **Name**: `DOCKERHUB_TOKEN` 
@@ -41,7 +41,7 @@ Go to your GitHub repository → Settings → Secrets and variables → Actions 
 
 The workflow is configured to push to:
 - **Registry**: Docker Hub (`docker.io`)
-- **Repository**: `yoruverse/ui`
+- **Repository**: `jotis/yoruverse-ui`
 - **Tags**: 
   - `latest` (for main branch)
   - `main` (for main branch)
@@ -105,10 +105,10 @@ After a successful workflow run:
 
 ```bash
 # Pull latest image
-docker pull yoruverse/ui:latest
+docker pull jotis/yoruverse-ui:latest
 
 # Run the container
-docker run -d --name yoruverse-ui -p 4321:4321 yoruverse/ui:latest
+docker run -d --name yoruverse-ui -p 4321:4321 jotis/yoruverse-ui:latest
 
 # Access your app
 open http://localhost:4321
@@ -125,10 +125,10 @@ git push origin v1.0.0
 ```
 
 This will trigger the workflow to build and push:
-- `yoruverse/ui:v1.0.0`
-- `yoruverse/ui:1.0.0` 
-- `yoruverse/ui:1.0`
-- `yoruverse/ui:1`
+- `jotis/yoruverse-ui:v1.0.0`
+- `jotis/yoruverse-ui:1.0.0` 
+- `jotis/yoruverse-ui:1.0`
+- `jotis/yoruverse-ui:1`
 
 ## Workflow Status Badges
 
@@ -136,14 +136,14 @@ Add status badges to your README.md:
 
 ```markdown
 ![Docker Build](https://github.com/yoruverse/ui/actions/workflows/docker-build-push.yml/badge.svg)
-![Docker Image Size](https://img.shields.io/docker/image-size/yoruverse/ui/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/yoruverse/ui)
+![Docker Image Size](https://img.shields.io/docker/image-size/jotis/yoruverse-ui/latest)
+![Docker Pulls](https://img.shields.io/docker/pulls/jotis/yoruverse-ui)
 ```
 
 ## Docker Hub Integration
 
 After the first successful workflow run, your Docker Hub repository will show:
-- **Repository**: https://hub.docker.com/r/yoruverse/ui
+- **Repository**: https://hub.docker.com/r/jotis/yoruverse-ui
 - **Tags**: All available versions
 - **Architecture**: Supported platforms
 - **Automated builds**: Linked to GitHub
@@ -160,7 +160,7 @@ Error: Cannot perform an interactive login from a non TTY device
 
 #### 2. Repository Not Found
 ```
-Error: repository yoruverse/ui not found
+Error: repository jotis/yoruverse-ui not found
 ```
 **Solution**: 
 - Make sure the Docker Hub repository exists, or
@@ -189,7 +189,7 @@ brew install act  # macOS
 curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash  # Linux
 
 # Test the workflow
-act push -s DOCKERHUB_USERNAME=your-username -s DOCKERHUB_TOKEN=your-token
+act push -s DOCKERHUB_USERNAME=jotis -s DOCKERHUB_TOKEN=your-token
 ```
 
 ## Monitoring and Maintenance

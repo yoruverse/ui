@@ -232,7 +232,7 @@ This repository includes automated GitHub Actions workflows for building and pus
 
 The repository is configured with GitHub Actions that automatically:
 - **Build** multi-architecture Docker images on every push to main
-- **Push** images to Docker Hub (`yoruverse/ui`)
+- **Push** images to Docker Hub (`jotis/yoruverse-ui`)
 - **Tag** with version numbers for releases
 - **Scan** for security vulnerabilities
 - **Notify** with deployment status
@@ -244,13 +244,13 @@ The repository is configured with GitHub Actions that automatically:
    - `DOCKERHUB_USERNAME`: Your Docker Hub username  
    - `DOCKERHUB_TOKEN`: Your Docker Hub access token
 2. Push to main branch to trigger build
-3. Image will be available at: `yoruverse/ui:latest`
+3. Image will be available at: `jotis/yoruverse-ui:latest`
 
 ### Pull Pre-built Image
 ```bash
 # Pull from Docker Hub (built by GitHub Actions)
-docker pull yoruverse/ui:latest
-docker run -d --name yoruverse-ui -p 4321:4321 yoruverse/ui:latest
+docker pull jotis/yoruverse-ui:latest
+docker run -d --name yoruverse-ui -p 4321:4321 jotis/yoruverse-ui:latest
 ```
 
 ## Support
