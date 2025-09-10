@@ -1,0 +1,100 @@
+---
+title: Button
+description: A versatile button component with multiple variants and full accessibility support.
+---
+
+---
+
+import { Button } from "@/components/ui/button";
+import { ComponentSnippet } from "@/components/shared/component-snippet";
+
+The Button component is a foundational UI element that provides consistent styling and behavior across the application. It supports multiple variants and inherits all standard HTML button attributes.
+
+## Usage
+
+The Button component can be imported and used in your React or Astro projects as shown below:
+
+```tsx
+import { Button } from "@yoruverse-js/ui";
+
+export default function App() {
+    return <Button>Click Me</Button>;
+}
+```
+
+```astro
+---
+import { Button } from "@yoruverse-js/ui";
+---
+
+<Button>Click Me</Button>;
+```
+
+## Variants
+
+### Primary (default)
+The primary button uses the brand colors and is intended for primary actions.
+
+<ComponentSnippet>
+    <Button>Button</Button>
+</ComponentSnippet>
+
+### Secondary
+The secondary button provides a more subtle appearance for secondary actions.
+
+<ComponentSnippet>
+    <Button variant="secondary">Button</Button>
+</ComponentSnippet>
+
+### Icon Button
+The icon button is designed for buttons that contain only an icon, ensuring proper sizing and accessibility.
+
+import { Circle } from "@lucide/astro"
+
+<ComponentSnippet>
+    <Button isIcon>
+        <Circle class="size-4" />
+    </Button>
+    <Button isIcon variant="secondary">
+        <Circle class="size-4" />
+    </Button>
+</ComponentSnippet>
+
+## States
+
+### Default State
+<ComponentSnippet>
+    <Button>Default</Button>
+    <Button variant="secondary">Default</Button>
+</ComponentSnippet>
+
+### Disabled State
+<ComponentSnippet>
+    <Button disabled>Disabled</Button>
+    <Button variant="secondary" disabled>Disabled</Button>
+</ComponentSnippet>
+
+## Custom Props
+
+The button extends the props of a standard React button element with the following custom properties:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"primary" \| "secondary"` | `"primary"` | Visual style variant of the button |
+| `isIcon` | `boolean` | `undefined` | Whether the button contains only an icon |
+
+## Accessibility
+
+- Fully keyboard accessible with proper focus management
+- Supports ARIA attributes for screen readers
+- Includes proper disabled state handling
+- Uses semantic HTML button element
+
+## Best Practices
+
+1. **Use Primary Sparingly**: Use primary buttons for the main action on a page or section
+2. **Secondary for Support**: Use secondary buttons for supporting actions
+3. **Descriptive Labels**: Use clear, action-oriented text like "Save Changes" instead of "OK"
+4. **Loading States**: Consider adding loading indicators for async actions
+5. **Icon Usage**: When using icons, ensure proper accessibility with aria-label
+

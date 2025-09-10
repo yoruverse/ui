@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "@/components/layouts/layout.astro";
+import Prose from "@/components/layouts/prose.astro";
+
+export async function getStaticPaths() {
+	const components = await getCollection("components");
+
+	console.log(components);
+
+	return components.map((component) => ({
+		params: { id: component.id },
+		props: { component },
+	}));
+}
+
+const { component } = Astro.props;
+const { Content } = await render(component);
+---
+<Layout>
+    <Prose>
+        <header>
+            <h1>{component.data.title}</h1>
+            <p>{component.data.description}</p>
+        </header>
+        <Content />
+    </Prose>
+    <span
+        class="fixed z-[-1] size-full top-0 left-0 bg-radial-[75%_75%_at_100%_0%] from-brand-solid/40 to-primary"
+    ></span>
+</Layout>

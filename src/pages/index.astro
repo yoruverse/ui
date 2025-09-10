@@ -1,16 +1,19 @@
 ---
-
+import Layout from "@/components/layouts/layout.astro";
+import { ComponentSnippet } from "@/components/shared/component-snippet";
+import { Button } from "@/components/ui/button";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+
+	<ComponentSnippet>
+		<Button>Click me!</Button>
+		<Button variant="secondary">Click me!</Button>
+	</ComponentSnippet>
+	
+	<ComponentSnippet className="mt-5 dark">
+		<Button>Click me!</Button>
+		<Button variant="secondary">Click me!</Button>
+	</ComponentSnippet>
+
+</Layout>

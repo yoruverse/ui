@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "@yoruverse-js/tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --font-sans: "Geist Variable", sans-serif;
+    --font-mono: "Geist Mono Variable", monospace;
+}
+
+@layer base {
+    body {
+        @apply bg-primary text-secondary antialiased p-5;
+    }
+}
