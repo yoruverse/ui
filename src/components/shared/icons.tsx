@@ -1,0 +1,39 @@
+/** biome-ignore-all lint/correctness/useUniqueElementIds: SVG */
+import type { SVGProps } from "react";
+
+export const Yoruverse = (props: SVGProps<SVGSVGElement>) => (
+	<svg
+		width="40"
+		height="40"
+		viewBox="0 0 40 40"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<title>Yoruverse Logo</title>
+		<g clip-path="url(#clip0_2_244)" className="fill-fg-brand-secondary">
+			<path d="M0 12C0 5.37258 5.37258 0 12 0H28C34.6274 0 40 5.37258 40 12V28C40 34.6274 34.6274 40 28 40H12C5.37258 40 0 34.6274 0 28V12Z" />
+			<mask
+				id="mask0_2_244"
+				style={{ maskType: "luminance" }}
+				maskUnits="userSpaceOnUse"
+				x="5"
+				y="5"
+				width="30"
+				height="30"
+			>
+				<path d="M35 5H5V35H35V5Z" fill="white" />
+			</mask>
+			<g mask="url(#mask0_2_244)" className="fill-white">
+				<path d="M20 5C28.2843 5 35 11.7157 35 20C35 28.2843 28.2843 35 20 35C11.7157 35 5 28.2843 5 20C5 11.7157 11.7157 5 20 5ZM19.9854 8.63281C13.7155 8.63281 8.63281 13.7155 8.63281 19.9854C8.63281 26.2552 13.7155 31.3379 19.9854 31.3379C26.2552 31.3379 31.3379 26.2552 31.3379 19.9854C31.3379 13.7155 26.2552 8.63281 19.9854 8.63281Z" />
+				<path d="M13.4082 17.4365C13.4082 16.0208 14.5559 14.873 15.9717 14.873C17.3875 14.873 18.5352 16.0208 18.5352 17.4365V22.5635C18.5352 23.9792 17.3875 25.127 15.9717 25.127C14.5559 25.127 13.4082 23.9792 13.4082 22.5635V17.4365Z" />
+				<path d="M21.4648 17.4365C21.4648 16.0208 22.6125 14.873 24.0283 14.873C25.4441 14.873 26.5918 16.0208 26.5918 17.4365V22.5635C26.5918 23.9792 25.4441 25.127 24.0283 25.127C22.6125 25.127 21.4648 23.9792 21.4648 22.5635V17.4365Z" />
+			</g>
+		</g>
+		<defs>
+			<clipPath id="clip0_2_244">
+				<rect width="40" height="40" />
+			</clipPath>
+		</defs>
+	</svg>
+);

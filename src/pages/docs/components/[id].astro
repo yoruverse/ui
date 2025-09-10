@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import Layout from "@/components/layouts/layout.astro";
 import Prose from "@/components/layouts/prose.astro";
+import { Yoruverse } from "@/components/shared/icons";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -10,6 +11,16 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+	Sidebar,
+	SidebarContent,
+	SidebarHeader,
+	SidebarNav,
+	SidebarNavGroup,
+	SidebarNavItem,
+	SidebarNavLink,
+	SidebarNavList,
+} from "@/components/layouts/sidebar";
 
 export async function getStaticPaths() {
 	const components = await getCollection("components");
@@ -22,8 +33,52 @@ export async function getStaticPaths() {
 
 const { component } = Astro.props;
 const { Content } = await render(component);
+
+// Get all components for dynamic navigation
+const allComponents = await getCollection("components");
 ---
-<Layout>
+<Layout
+    title={`${component.data.title} Component - Yoruverse UI`}
+    description={component.data.description || `Learn how to use the ${component.data.title} component in your React and Astro projects. Includes examples, props, and best practices.`}
+    canonical={`https://ui.yoruverse.com/docs/components/${component.id}`}
+>
+    <Sidebar width="sm" className="fixed h-screen top-5 left-5">
+        <SidebarHeader>
+            <Yoruverse className="size-8" />
+            <h3 class="font-semibold text-primary">Yoruverse UI</h3>
+        </SidebarHeader>
+        <SidebarContent>
+            <SidebarNav>
+                <SidebarNavGroup title="Getting Started">
+                    <SidebarNavList>
+                        <SidebarNavItem>
+                            <SidebarNavLink href="/docs/installation">Installation</SidebarNavLink>
+                        </SidebarNavItem>
+                        <SidebarNavItem>
+                            <SidebarNavLink href="/docs/quickstart">Quick Start</SidebarNavLink>
+                        </SidebarNavItem>
+                        <SidebarNavItem>
+                            <SidebarNavLink href="/docs/configuration">Configuration</SidebarNavLink>
+                        </SidebarNavItem>
+                    </SidebarNavList>
+                </SidebarNavGroup>
+                <SidebarNavGroup title="Components">
+                    <SidebarNavList>
+                        {allComponents.map((comp) => (
+                            <SidebarNavItem>
+                                <SidebarNavLink 
+                                    href={`/docs/components/${comp.id}`}
+                                    isActive={comp.id === component.id}
+                                >
+                                    {comp.data.title}
+                                </SidebarNavLink>
+                            </SidebarNavItem>
+                        ))}
+                    </SidebarNavList>
+                </SidebarNavGroup>
+            </SidebarNav>
+        </SidebarContent>
+    </Sidebar> 
     <Prose>
         <header>
             <Breadcrumb>

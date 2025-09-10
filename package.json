@@ -19,6 +19,7 @@
     "@types/react-dom": "^19.1.9",
     "@yoruverse-js/tailwindcss": "^1.0.9",
     "astro": "^5.13.7",
+    "astro-seo": "^0.8.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwindcss": "^4.1.13"
