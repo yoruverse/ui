@@ -2,11 +2,17 @@
 import { getCollection, render } from "astro:content";
 import Layout from "@/components/layouts/layout.astro";
 import Prose from "@/components/layouts/prose.astro";
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export async function getStaticPaths() {
 	const components = await getCollection("components");
-
-	console.log(components);
 
 	return components.map((component) => ({
 		params: { id: component.id },
@@ -20,6 +26,25 @@ const { Content } = await render(component);
 <Layout>
     <Prose>
         <header>
+            <Breadcrumb>
+                <BreadcrumbList>
+                    <BreadcrumbItem>
+                        <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <BreadcrumbPage>{component.data.title}</BreadcrumbPage>
+                    </BreadcrumbItem>
+                </BreadcrumbList>
+            </Breadcrumb>
             <h1>{component.data.title}</h1>
             <p>{component.data.description}</p>
         </header>

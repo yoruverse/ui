@@ -1,0 +1,179 @@
+---
+title: Breadcrumb
+description: A navigation component that shows the current page location within the application hierarchy.
+---
+
+---
+
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { ComponentSnippet } from "@/components/shared/component-snippet";
+
+The Breadcrumb component provides a way to display navigation hierarchy, helping users understand their current location within the application and navigate back to parent pages.
+
+## Usage
+
+The Breadcrumb component can be imported and used in your React or Astro projects as shown below:
+
+```tsx
+import { 
+	Breadcrumb,
+	BreadcrumbList,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbPage,
+	BreadcrumbSeparator
+} from "@yoruverse-js/ui";
+
+export default function App() {
+	return (
+		<Breadcrumb>
+			<BreadcrumbList>
+				<BreadcrumbItem>
+					<BreadcrumbLink href="/">Home</BreadcrumbLink>
+				</BreadcrumbItem>
+				<BreadcrumbSeparator />
+				<BreadcrumbItem>
+					<BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
+				</BreadcrumbItem>
+				<BreadcrumbSeparator />
+				<BreadcrumbItem>
+					<BreadcrumbPage>Components</BreadcrumbPage>
+				</BreadcrumbItem>
+			</BreadcrumbList>
+		</Breadcrumb>
+	);
+}
+```
+
+```astro
+---
+import { 
+	Breadcrumb,
+	BreadcrumbList,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbPage,
+	BreadcrumbSeparator
+} from "@yoruverse-js/ui";
+---
+
+<Breadcrumb>
+	<BreadcrumbList>
+		<BreadcrumbItem>
+			<BreadcrumbLink href="/">Home</BreadcrumbLink>
+		</BreadcrumbItem>
+		<BreadcrumbSeparator />
+		<BreadcrumbItem>
+			<BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
+		</BreadcrumbItem>
+		<BreadcrumbSeparator />
+		<BreadcrumbItem>
+			<BreadcrumbPage>Components</BreadcrumbPage>
+		</BreadcrumbItem>
+	</BreadcrumbList>
+</Breadcrumb>
+```
+
+## Examples
+
+### Basic Breadcrumb
+A simple breadcrumb navigation showing the current page hierarchy.
+
+<ComponentSnippet>
+	<Breadcrumb>
+		<BreadcrumbList>
+			<BreadcrumbItem>
+				<BreadcrumbLink href="/">Home</BreadcrumbLink>
+			</BreadcrumbItem>
+			<BreadcrumbSeparator />
+			<BreadcrumbItem>
+				<BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
+			</BreadcrumbItem>
+			<BreadcrumbSeparator />
+			<BreadcrumbItem>
+				<BreadcrumbPage>Components</BreadcrumbPage>
+			</BreadcrumbItem>
+		</BreadcrumbList>
+	</Breadcrumb>
+</ComponentSnippet>
+
+### Custom Separator
+You can customize the separator between breadcrumb items.
+
+<ComponentSnippet>
+	<Breadcrumb>
+		<BreadcrumbList>
+			<BreadcrumbItem>
+				<BreadcrumbLink href="/">Home</BreadcrumbLink>
+			</BreadcrumbItem>
+			<BreadcrumbSeparator>→</BreadcrumbSeparator>
+			<BreadcrumbItem>
+				<BreadcrumbLink href="/products">Products</BreadcrumbLink>
+			</BreadcrumbItem>
+			<BreadcrumbSeparator>→</BreadcrumbSeparator>
+			<BreadcrumbItem>
+				<BreadcrumbPage>Laptops</BreadcrumbPage>
+			</BreadcrumbItem>
+		</BreadcrumbList>
+	</Breadcrumb>
+</ComponentSnippet>
+
+### Long Navigation Path
+Breadcrumbs handle longer navigation paths gracefully with text wrapping.
+
+<ComponentSnippet>
+	<Breadcrumb>
+		<BreadcrumbList>
+			<BreadcrumbItem>
+				<BreadcrumbLink href="/">Home</BreadcrumbLink>
+			</BreadcrumbItem>
+			<BreadcrumbSeparator />
+			<BreadcrumbItem>
+				<BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+			</BreadcrumbItem>
+			<BreadcrumbSeparator />
+			<BreadcrumbItem>
+				<BreadcrumbLink href="/dashboard/analytics">Analytics</BreadcrumbLink>
+			</BreadcrumbItem>
+			<BreadcrumbSeparator />
+			<BreadcrumbItem>
+				<BreadcrumbLink href="/dashboard/analytics/reports">Reports</BreadcrumbLink>
+			</BreadcrumbItem>
+			<BreadcrumbSeparator />
+			<BreadcrumbItem>
+				<BreadcrumbPage>Monthly Summary</BreadcrumbPage>
+			</BreadcrumbItem>
+		</BreadcrumbList>
+	</Breadcrumb>
+</ComponentSnippet>
+
+## Components
+
+The breadcrumb is composed of several sub-components that work together:
+
+| Component | Description |
+|-----------|-------------|
+| `Breadcrumb` | Root navigation container with proper ARIA labeling |
+| `BreadcrumbList` | Ordered list wrapper for breadcrumb items |
+| `BreadcrumbItem` | Individual breadcrumb item container |
+| `BreadcrumbLink` | Clickable navigation link with hover states |
+| `BreadcrumbPage` | Current page indicator (non-clickable) |
+| `BreadcrumbSeparator` | Visual separator between breadcrumb items |
+
+## Accessibility
+
+- Uses semantic HTML with proper `nav` and `ol` elements
+- Includes `aria-label="breadcrumb"` for screen readers
+- Current page marked with `aria-current="page"`
+- Keyboard navigation support with proper focus management
+- Screen reader friendly with role attributes
+- Separators marked as presentational with `aria-hidden="true"`
+
+## Best Practices
+
+1. **Show Hierarchy**: Always include the root/home page as the first item
+2. **Current Page**: Mark the current page with `BreadcrumbPage` (non-clickable)
+3. **Reasonable Length**: Avoid overly deep hierarchies that create long breadcrumbs
+4. **Consistent Separators**: Use the same separator throughout your application
+5. **Mobile Friendly**: Consider truncating or collapsing on smaller screens
+6. **Link Accuracy**: Ensure all links lead to valid, accessible pages
